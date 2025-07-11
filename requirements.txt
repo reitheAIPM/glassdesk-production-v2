@@ -11,7 +11,7 @@ cryptography==41.0.7
 authlib==1.6.0  # Enhanced OAuth implementation
 
 # HTTP & API
-httpx==0.25.2
+httpx==0.27.2
 aiohttp==3.9.1
 requests==2.31.0
 
