@@ -7,15 +7,11 @@ import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 import chromadb
-from langchain_community.llms import OpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.chains import ConversationalRetrievalChain
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import TextLoader
-# NOTE: langchain_community.memory.ConversationBufferMemory does not exist as of 0.3.27; use langchain.memory instead.
 from langchain.memory import ConversationBufferMemory
-from langchain_community.chat_models import ChatOpenAI
 from .user_communication import user_comm
 from .logging_config import log_api_error
 

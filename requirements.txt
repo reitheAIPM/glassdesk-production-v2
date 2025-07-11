@@ -15,10 +15,11 @@ httpx>=0.27.0  # Updated for chromadb compatibility
 aiohttp==3.9.1
 requests==2.31.0
 
-# AI & Processing
+# AI & Processing - Updated for Python 3.12 compatibility
 openai>=1.6.1
-langchain==0.0.350
-langchain-openai==0.0.2
+langchain>=0.1.0  # Updated to newer version
+langchain-openai>=0.1.0  # Updated to newer version
+langchain-community>=0.0.20  # Added explicit community package
 chromadb==0.4.15  # Updated to stable version compatible with dependencies
 
 # Database (SQLite for development, PostgreSQL for production)
@@ -30,9 +31,9 @@ redis==5.0.1
 # Background Processing
 celery==5.3.4
 
-# Data Processing
-pydantic==1.10.13  # Pinned to v1 for LangChain compatibility
-pydantic-settings==0.2.1
+# Data Processing - Updated for Python 3.12
+pydantic>=2.0.0  # Updated to v2 for newer Python compatibility
+pydantic-settings>=2.0.0  # Updated to v2
 python-dotenv==1.0.0
 
 # Utilities
