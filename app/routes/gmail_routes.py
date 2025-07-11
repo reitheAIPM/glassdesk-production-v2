@@ -8,18 +8,51 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 import logging
 
-from ..gmail_integration import gmail_integration
-from ..enhanced_oauth_manager import enhanced_oauth_manager
+# Import with error handling
+try:
+    from ..gmail_integration import gmail_integration
+    gmail_integration_available = True
+except Exception as e:
+    gmail_integration_available = False
+    gmail_integration = None
+    logging.getLogger(__name__).warning(f"Gmail integration not available: {e}")
+
+try:
+    from ..enhanced_oauth_manager import enhanced_oauth_manager
+    oauth_manager_available = True
+except Exception as e:
+    oauth_manager_available = False
+    enhanced_oauth_manager = None
+    logging.getLogger(__name__).warning(f"Enhanced OAuth manager not available: {e}")
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/gmail", tags=["gmail"])
 
+def _check_services():
+    """Check if required services are available"""
+    if not oauth_manager_available:
+        raise HTTPException(
+            status_code=503,
+            detail="OAuth service temporarily unavailable. Please check server configuration."
+        )
+    if not gmail_integration_available:
+        raise HTTPException(
+            status_code=503,
+            detail="Gmail integration service temporarily unavailable. Please check server configuration."
+        )
 
 @router.get("/status")
 async def gmail_status():
     """Check Gmail OAuth status and connectivity"""
     try:
+        if not oauth_manager_available:
+            return {
+                "status": "service_unavailable",
+                "message": "OAuth service temporarily unavailable",
+                "authenticated": False
+            }
+        
         # Check if user is authenticated with Gmail
         tokens = enhanced_oauth_manager.token_manager.get_tokens("google")
         
@@ -46,6 +79,7 @@ async def gmail_status():
 @router.post("/fetch-emails")
 async def fetch_gmail_emails(max_results: Optional[int] = Query(50, description="Maximum number of emails to fetch")):
     """Fetch real emails from Gmail API"""
+    _check_services()
     try:
         # Check authentication first
         tokens = enhanced_oauth_manager.token_manager.get_tokens("google")
@@ -75,6 +109,7 @@ async def fetch_gmail_emails(max_results: Optional[int] = Query(50, description=
 @router.post("/process-emails")
 async def process_gmail_emails(max_results: Optional[int] = Query(50, description="Maximum number of emails to process")):
     """Fetch and process real Gmail data"""
+    _check_services()
     try:
         # Check authentication first
         tokens = enhanced_oauth_manager.token_manager.get_tokens("google")
@@ -104,6 +139,14 @@ async def process_gmail_emails(max_results: Optional[int] = Query(50, descriptio
 async def test_gmail_connection():
     """Test Gmail API connection and authentication"""
     try:
+        if not oauth_manager_available:
+            return {
+                "status": "service_unavailable",
+                "message": "OAuth service temporarily unavailable",
+                "authenticated": False,
+                "connection_test": "failed"
+            }
+        
         # Check authentication
         tokens = enhanced_oauth_manager.token_manager.get_tokens("google")
         if not tokens:
@@ -111,6 +154,14 @@ async def test_gmail_connection():
                 "status": "not_authenticated",
                 "message": "Gmail access not configured",
                 "authenticated": False
+            }
+        
+        if not gmail_integration_available:
+            return {
+                "status": "service_unavailable",
+                "message": "Gmail integration service temporarily unavailable",
+                "authenticated": True,
+                "connection_test": "failed"
             }
         
         # Test fetching a small number of emails
