@@ -49,75 +49,64 @@
 
 ### **Phase 2: Real Integration** 🔄 **IN PROGRESS**
 
-#### **🔴 HIGH PRIORITY**
-1. **Test OpenAI API Integration**
-   - **Status**: ✅ **COMPLETE**
+#### **🔴 CRITICAL PRIORITY**
+1. **Fix Railway Deployment Issues** 🚨 **URGENT**
+   - **Status**: 🔄 **IN PROGRESS**
+   - **Description**: Railway deployment returning 502 Bad Gateway errors
+   - **Issues Identified**:
+     - Application fails to start (502 errors on all endpoints)
+     - Railway shows "No deployments found" in logs
+     - Even minimal FastAPI app fails to start
+     - Dependency conflicts likely causing startup failures
+   - **Actions Taken**:
+     - ✅ Fixed httpx dependency conflicts (>=0.27.0 for chromadb)
+     - ✅ Pinned pydantic to v1 for LangChain compatibility
+     - ✅ Added error handling for OAuth manager startup failures
+     - ✅ Added service availability checks in Gmail routes
+     - ✅ Created minimal test version to isolate issues
+   - **Next Actions**:
+     - 🔄 Investigate Railway environment/Python configuration
+     - 🔄 Check if missing critical environment variables (SECRET_KEY, OPENAI_API_KEY)
+     - 🔄 Verify Procfile and startup command
+     - 🔄 Test with even simpler requirements.txt
+   - **CLI Commands**:
+     - `railway status` → Project: Glassdesk, Environment: production
+     - `railway logs` → "No deployments found"
+     - `http GET https://glassdesk-production.up.railway.app/health` → 502 Bad Gateway
+   - **Priority**: 🔴 **CRITICAL**
+
+2. **Verify Railway Environment Configuration** 
+   - **Status**: ⏳ **PENDING**
+   - **Description**: Check Railway environment variables and configuration
+   - **Issues**:
+     - Missing SECRET_KEY (required for FastAPI startup)
+     - Missing OPENAI_API_KEY (required for AI functionality)
+     - Potential Python version or build configuration issues
+   - **Actions Required**:
+     - Set SECRET_KEY in Railway dashboard
+     - Verify OPENAI_API_KEY is configured
+     - Check Railway Python version and build settings
+   - **Environment Variables Confirmed**: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_DESKTOP_CLIENT_ID, GOOGLE_DESKTOP_CLIENT_SECRET, OAuth redirect URIs
+   - **Priority**: 🔴 **CRITICAL**
+
+#### **🔴 HIGH PRIORITY** (On Hold Until Deployment Fixed)
+3. **Test OpenAI API Integration**
+   - **Status**: ⏳ **BLOCKED** (Deployment issues)
    - **Description**: Test AI query endpoints with real data
-   - **CLI Commands**:
-     - `http POST https://glassdesk-production.up.railway.app/ai/query q=="summarize my recent emails"` → 404 Not Found
-     - `http POST https://glassdesk-production.up.railway.app/test/ai/enhanced_query query="summarize my recent emails"` → 404 Not Found
-     - `http POST "https://glassdesk-production.up.railway.app/test/query?query=summarize my recent emails"` → 200 OK, AI response received
-   - **Result**: Basic AI query endpoint is working in production. Enhanced AI endpoint not available.
    - **Priority**: 🔴 **HIGH**
 
-1c. **Expose Enhanced AI Endpoint in Production**
-   - **Status**: ⏳ **PENDING**
-   - **Description**: Ensure `/test/ai/enhanced_query` endpoint is implemented and exposed in production
-   - **Action**: Add or expose the enhanced AI endpoint in FastAPI app and redeploy
-   - **Priority**: 🔴 **HIGH**
-
-1a. **Fix or Implement AI Endpoints in Production**
-   - **Status**: ⏳ **PENDING**
-   - **Description**: Ensure `/ai/query` and `/test/ai/enhanced_query` endpoints are implemented and exposed in production
-   - **Action**: 
-     - Investigate FastAPI router registration in `main.py` and fix if needed (router is included)
-     - Verify deployed code matches current repo (check for outdated deployment)
-     - Check for any path/prefix mismatches or environment-specific issues
-   - **Priority**: 🔴 **HIGH**
-
-1b. **Verify All AI Endpoints Are Exposed and Documented**
-   - **Status**: ⏳ **PENDING**
-   - **Description**: Check all AI-related endpoints are available in production and documented in API reference
-   - **Action**: Review FastAPI routes and update documentation if needed
-   - **Priority**: 🔴 **HIGH**
-
-2. **Test Production OAuth Flow**
-   - **Status**: ✅ **COMPLETE**
+4. **Test Production OAuth Flow**
+   - **Status**: ⏳ **BLOCKED** (Deployment issues)
    - **Description**: Test OAuth with real Gmail account
-   - **CLI Command**: `http GET https://glassdesk-production.up.railway.app/auth/google/login`
-   - **Result**: 307 Temporary Redirect to Google OAuth (working correctly)
    - **Priority**: 🔴 **HIGH**
 
-3. **Update Google Cloud Console Redirect URIs**
-   - **Status**: ✅ **COMPLETE**
-   - **Description**: Add production redirect URIs to Google Cloud Console
-   - **Action**: Environment variables set via Railway CLI, OAuth flow working
+5. **Test Real Gmail API Integration**
+   - **Status**: ⏳ **BLOCKED** (Deployment issues)
+   - **Description**: Test Gmail endpoints in production
    - **Priority**: 🔴 **HIGH**
 
-4. **Monitor Production Logs**
-   - **Status**: ✅ **COMPLETE**
-   - **Description**: Check Railway logs for any errors or issues
-   - **CLI Commands**:
-     - `railway logs` → Timeout (network issue)
-     - `http GET https://glassdesk-production.up.railway.app/health` → 200 OK, healthy
-     - `http POST "https://glassdesk-production.up.railway.app/test/query?query=test query"` → 200 OK, AI working
-   - **Result**: Application is healthy, AI endpoints working correctly
-   - **Priority**: 🔴 **HIGH**
-
-#### **🟡 MEDIUM PRIORITY**
-5. **Implement Real Gmail API Integration**
-   - **Status**: ✅ **COMPLETE** (Code implemented)
-   - **Description**: Replace mock data with real Gmail API calls
-   - **CLI Commands**:
-     - Created `app/gmail_integration.py` with real Gmail API integration
-     - Created `app/routes/gmail_routes.py` with Gmail endpoints
-     - Updated `main.py` to include Gmail router
-     - Created clean repository: `glassdesk-production-v2`
-     - Deployed to Railway with clean history
-   - **Result**: Code implemented, deployment in progress
-   - **Priority**: 🟡 **MEDIUM**
-
-6. **Add Zoom API Integration**
+#### **🟡 MEDIUM PRIORITY** (On Hold)
+6. **Implement Real Zoom API Integration**
    - **Status**: ⏳ **PENDING**
    - **Description**: Implement real Zoom API integration
    - **Files to Create**: `app/zoom_integration.py`
@@ -129,7 +118,7 @@
    - **Files to Create**: `app/asana_integration.py`
    - **Priority**: 🟡 **MEDIUM**
 
-#### **🟢 LOW PRIORITY**
+#### **🟢 LOW PRIORITY** (On Hold)
 8. **Desktop Application Development**
    - **Status**: ⏳ **PENDING**
    - **Description**: Build Electron/Tauri desktop client
