@@ -172,5 +172,12 @@ class EnhancedOAuthManager:
         return status
 
 
-# Global enhanced OAuth manager instance
-enhanced_oauth_manager = EnhancedOAuthManager() 
+# Global enhanced OAuth manager instance with error handling
+try:
+    enhanced_oauth_manager = EnhancedOAuthManager()
+except Exception as e:
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.warning(f"Failed to initialize EnhancedOAuthManager: {e}")
+    # Create a minimal fallback that won't crash
+    enhanced_oauth_manager = None 

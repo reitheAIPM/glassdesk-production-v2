@@ -13,10 +13,19 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
 
+def _check_oauth_manager():
+    """Check if OAuth manager is available"""
+    if enhanced_oauth_manager is None:
+        raise HTTPException(
+            status_code=503, 
+            detail="OAuth service temporarily unavailable. Please check server configuration."
+        )
+
 # --- GOOGLE OAUTH (WEB) ---
 @router.get("/google/login")
 async def google_login():
     """Initiate Google OAuth flow for Gmail access (web)"""
+    _check_oauth_manager()
     try:
         result = await enhanced_oauth_manager.initiate_oauth_flow("google", is_desktop=False)
         return RedirectResponse(url=result["auth_url"])
@@ -27,6 +36,7 @@ async def google_login():
 @router.get("/google/callback")
 async def google_callback(code: str = Query(...), state: Optional[str] = None):
     """Handle Google OAuth callback and exchange code for tokens (web)"""
+    _check_oauth_manager()
     if not code:
         raise HTTPException(status_code=400, detail="Authorization code not provided")
     try:
@@ -40,6 +50,7 @@ async def google_callback(code: str = Query(...), state: Optional[str] = None):
 @router.get("/google/desktop/login")
 async def google_desktop_login():
     """Initiate Google OAuth flow for Gmail access (desktop/PKCE)"""
+    _check_oauth_manager()
     try:
         result = await enhanced_oauth_manager.initiate_oauth_flow("google", is_desktop=True)
         return {"auth_url": result["auth_url"]}
@@ -50,6 +61,7 @@ async def google_desktop_login():
 @router.get("/google/desktop/callback")
 async def google_desktop_callback(code: str = Query(...), state: Optional[str] = None):
     """Handle Google OAuth callback and exchange code for tokens (desktop/PKCE)"""
+    _check_oauth_manager()
     if not code:
         raise HTTPException(status_code=400, detail="Authorization code not provided")
     try:
@@ -63,11 +75,21 @@ async def google_desktop_callback(code: str = Query(...), state: Optional[str] =
 @router.get("/status")
 async def auth_status():
     """Check authentication status for all services"""
+    if enhanced_oauth_manager is None:
+        return {
+            "status": "OAuth service unavailable",
+            "providers": {
+                "google": {"configured": False, "connected": False, "oauth_flow": True},
+                "zoom": {"configured": False, "connected": False, "oauth_flow": True},
+                "asana": {"configured": False, "connected": False, "oauth_flow": False}
+            }
+        }
     return enhanced_oauth_manager.get_provider_status()
 
 @router.post("/logout")
 async def logout():
     """Logout and revoke access tokens"""
+    _check_oauth_manager()
     providers = ["google", "zoom", "asana"]
     revoked = []
     for provider in providers:
