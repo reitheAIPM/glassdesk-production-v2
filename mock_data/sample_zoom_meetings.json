@@ -1,0 +1,51 @@
+{
+  "meetings": [
+    {
+      "id": "meeting_001",
+      "topic": "Q4 Planning Session",
+      "start_time": "2024-01-15T14:00:00Z",
+      "duration": 60,
+      "participants": ["user@company.com", "boss@company.com", "designer@company.com"],
+      "transcript": "Meeting started at 2:00 PM.\n\nBoss: Welcome everyone to our Q4 planning session. Let's start with the budget review.\n\nUser: I've prepared the initial budget numbers. We're looking at a 15% increase in marketing spend, primarily for the mobile app launch.\n\nDesigner: That sounds good, but we need to consider the design team's needs too. We're planning to hire two more designers for the mobile app project.\n\nBoss: What's the timeline for the mobile app launch?\n\nUser: We're targeting end of Q4, but that depends on getting the budget approved quickly.\n\nDesigner: I can have the final designs ready by end of January.\n\nBoss: Perfect. Let's set the budget approval deadline for Friday. User, can you have the detailed breakdown ready by then?\n\nUser: Yes, I'll have it ready by Friday.\n\nBoss: Great. Any other items for today?\n\nDesigner: Just a quick note - we should schedule user testing sessions for the mobile app in February.\n\nBoss: Good point. Let's add that to the timeline.\n\nMeeting ended at 3:00 PM.",
+      "recording_files": [
+        {
+          "id": "recording_001",
+          "file_name": "Q4_Planning_2024-01-15.mp4",
+          "file_size": 150000000,
+          "download_url": "https://zoom.us/recording/download/recording_001"
+        }
+      ]
+    },
+    {
+      "id": "meeting_002",
+      "topic": "Mobile App Design Review",
+      "start_time": "2024-01-16T10:00:00Z",
+      "duration": 45,
+      "participants": ["user@company.com", "designer@company.com"],
+      "transcript": "Meeting started at 10:00 AM.\n\nDesigner: Thanks for joining the design review. I've updated the mobile app designs based on our previous feedback.\n\nUser: These look much better. I like the new color scheme.\n\nDesigner: Great! I've also improved the navigation flow. Users can now access all features within 3 taps.\n\nUser: That's excellent. How does this affect the development timeline?\n\nDesigner: The new design adds about 2 weeks to the development time, but it will provide a much better user experience.\n\nUser: That's acceptable. When can you have the final designs ready?\n\nDesigner: I can have everything finalized by end of January.\n\nUser: Perfect. Let's schedule another review next week to check the progress.\n\nDesigner: Sounds good. I'll send you an invite.\n\nMeeting ended at 10:45 AM.",
+      "recording_files": [
+        {
+          "id": "recording_002",
+          "file_name": "Mobile_App_Design_Review_2024-01-16.mp4",
+          "file_size": 80000000,
+          "download_url": "https://zoom.us/recording/download/recording_002"
+        }
+      ]
+    },
+    {
+      "id": "meeting_003",
+      "topic": "Weekly Team Standup",
+      "start_time": "2024-01-17T09:00:00Z",
+      "duration": 30,
+      "participants": ["user@company.com", "developer1@company.com", "developer2@company.com", "designer@company.com"],
+      "transcript": "Meeting started at 9:00 AM.\n\nUser: Good morning everyone. Let's go around and share our progress.\n\nDeveloper1: I completed the website homepage redesign yesterday. All tests are passing.\n\nDeveloper2: I'm working on the mobile app backend. Should be done by Friday.\n\nDesigner: I'm finishing up the mobile app designs. On track for end of January.\n\nUser: Great progress everyone. Any blockers?\n\nDeveloper1: We need the final design assets for the mobile app.\n\nDesigner: I'll have them ready by Friday.\n\nDeveloper2: Perfect. That works for my timeline.\n\nUser: Excellent. Let's keep up the good work. Meeting adjourned.\n\nMeeting ended at 9:30 AM.",
+      "recording_files": []
+    }
+  ],
+  "metadata": {
+    "total_meetings": 3,
+    "date_range": "2024-01-15 to 2024-01-17",
+    "total_duration": 135,
+    "recordings_available": 2
+  }
+} 
