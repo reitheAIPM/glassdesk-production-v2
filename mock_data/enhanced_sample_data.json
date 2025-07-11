@@ -1,0 +1,196 @@
+{
+  "gmail_messages": [
+    {
+      "id": "msg_001",
+      "subject": "Urgent: Project deadline moved to Friday",
+      "from": "manager@company.com",
+      "to": ["user@company.com"],
+      "date": "2024-01-15T09:30:00Z",
+      "body": "Hi team, I need to inform you that the project deadline has been moved to Friday. Please ensure all deliverables are ready by then. This is critical for our client presentation.",
+      "labels": ["INBOX", "IMPORTANT"],
+      "thread_id": "thread_001"
+    },
+    {
+      "id": "msg_002",
+      "subject": "Meeting reminder: Weekly standup at 2 PM",
+      "from": "calendar@company.com",
+      "to": ["user@company.com"],
+      "date": "2024-01-15T10:00:00Z",
+      "body": "Reminder: You have a weekly standup meeting scheduled for today at 2:00 PM. Please prepare your updates on current project status and any blockers.",
+      "labels": ["INBOX"],
+      "thread_id": "thread_002"
+    },
+    {
+      "id": "msg_003",
+      "subject": "Action required: Review and approve design mockups",
+      "from": "designer@company.com",
+      "to": ["user@company.com"],
+      "date": "2024-01-15T11:15:00Z",
+      "body": "Please review the attached design mockups for the new feature. I need your approval by end of day so we can proceed with development. Let me know if you have any feedback or changes needed.",
+      "labels": ["INBOX", "UNREAD"],
+      "thread_id": "thread_003"
+    },
+    {
+      "id": "msg_004",
+      "subject": "Follow up: Client feedback on proposal",
+      "from": "client@external.com",
+      "to": ["user@company.com"],
+      "date": "2024-01-15T14:20:00Z",
+      "body": "Thank you for the proposal. We have some feedback and would like to schedule a call to discuss the changes. Please let me know your availability this week.",
+      "labels": ["INBOX"],
+      "thread_id": "thread_004"
+    },
+    {
+      "id": "msg_005",
+      "subject": "Re: Budget approval for Q1 initiatives",
+      "from": "finance@company.com",
+      "to": ["user@company.com"],
+      "date": "2024-01-15T16:45:00Z",
+      "body": "Your budget request for Q1 initiatives has been approved. Please proceed with the implementation. Remember to submit expense reports monthly.",
+      "labels": ["INBOX"],
+      "thread_id": "thread_005"
+    }
+  ],
+  "zoom_meetings": [
+    {
+      "id": "meeting_001",
+      "topic": "Weekly Team Standup",
+      "start_time": "2024-01-15T14:00:00Z",
+      "end_time": "2024-01-15T15:00:00Z",
+      "participants": ["user@company.com", "manager@company.com", "teammate1@company.com", "teammate2@company.com"],
+      "transcript": "Manager: Let's start with project updates. User: I completed the API integration and started working on the frontend components. Teammate1: I'm still working on the database schema. Manager: Good progress. Any blockers? User: I need the design mockups approved to continue. Manager: I'll follow up with the design team. Teammate2: I'm blocked on the authentication flow. Manager: Let's schedule a separate meeting for that.",
+      "summary": "Team discussed project progress. User completed API integration and needs design approval. Teammate2 has authentication blockers.",
+      "action_items": [
+        "Follow up with design team for mockup approval",
+        "Schedule meeting for authentication flow issues",
+        "Continue frontend development"
+      ]
+    },
+    {
+      "id": "meeting_002",
+      "topic": "Client Proposal Review",
+      "start_time": "2024-01-15T10:00:00Z",
+      "end_time": "2024-01-15T11:30:00Z",
+      "participants": ["user@company.com", "client@external.com", "manager@company.com"],
+      "transcript": "Client: We like the overall approach but have concerns about the timeline. Manager: We can adjust the timeline if needed. User: I can accelerate the development by prioritizing core features. Client: That sounds good. We also want to add the analytics dashboard. Manager: We'll include that in the revised proposal. User: I'll update the proposal by end of day.",
+      "summary": "Client provided feedback on proposal. Timeline concerns addressed. Analytics dashboard to be added. User to update proposal.",
+      "action_items": [
+        "Update proposal with revised timeline",
+        "Include analytics dashboard in proposal",
+        "Submit revised proposal by end of day"
+      ]
+    },
+    {
+      "id": "meeting_003",
+      "topic": "Design Review Session",
+      "start_time": "2024-01-16T09:00:00Z",
+      "end_time": "2024-01-16T10:00:00Z",
+      "participants": ["user@company.com", "designer@company.com", "manager@company.com"],
+      "transcript": "Designer: Here are the mockups for the new feature. User: The layout looks good, but I have concerns about the mobile responsiveness. Designer: I can adjust the mobile breakpoints. Manager: The color scheme needs to match our brand guidelines. Designer: I'll update the colors and mobile layout. User: Please send the updated mockups by tomorrow.",
+      "summary": "Reviewed design mockups. Mobile responsiveness and color scheme need updates. Designer to provide updated mockups.",
+      "action_items": [
+        "Update mobile responsive design",
+        "Adjust color scheme to match brand",
+        "Send updated mockups by tomorrow"
+      ]
+    }
+  ],
+  "asana_tasks": [
+    {
+      "id": "task_001",
+      "name": "Complete API integration",
+      "description": "Finish integrating the payment API with the main application",
+      "status": "completed",
+      "completed": true,
+      "due_date": "2024-01-15T17:00:00Z",
+      "priority": "high",
+      "project": "E-commerce Platform",
+      "assignee": "user@company.com",
+      "tags": ["backend", "api"]
+    },
+    {
+      "id": "task_002",
+      "name": "Review design mockups",
+      "description": "Review and approve the new feature design mockups",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-15T17:00:00Z",
+      "priority": "high",
+      "project": "E-commerce Platform",
+      "assignee": "user@company.com",
+      "tags": ["design", "review"]
+    },
+    {
+      "id": "task_003",
+      "name": "Update client proposal",
+      "description": "Revise the client proposal based on feedback from today's meeting",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-15T17:00:00Z",
+      "priority": "high",
+      "project": "Client Project",
+      "assignee": "user@company.com",
+      "tags": ["proposal", "client"]
+    },
+    {
+      "id": "task_004",
+      "name": "Fix authentication bug",
+      "description": "Resolve the login authentication issue reported by QA",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-14T17:00:00Z",
+      "priority": "high",
+      "project": "E-commerce Platform",
+      "assignee": "user@company.com",
+      "tags": ["bug", "authentication"]
+    },
+    {
+      "id": "task_005",
+      "name": "Write documentation",
+      "description": "Create user documentation for the new feature",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-17T17:00:00Z",
+      "priority": "medium",
+      "project": "E-commerce Platform",
+      "assignee": "user@company.com",
+      "tags": ["documentation"]
+    },
+    {
+      "id": "task_006",
+      "name": "Setup development environment",
+      "description": "Configure the new development environment for the team",
+      "status": "completed",
+      "completed": true,
+      "due_date": "2024-01-12T17:00:00Z",
+      "priority": "medium",
+      "project": "Infrastructure",
+      "assignee": "user@company.com",
+      "tags": ["infrastructure", "setup"]
+    },
+    {
+      "id": "task_007",
+      "name": "Code review for payment module",
+      "description": "Review the payment module code changes submitted by the team",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-16T17:00:00Z",
+      "priority": "medium",
+      "project": "E-commerce Platform",
+      "assignee": "user@company.com",
+      "tags": ["code-review", "payment"]
+    },
+    {
+      "id": "task_008",
+      "name": "Prepare presentation for stakeholders",
+      "description": "Create presentation slides for the quarterly stakeholder meeting",
+      "status": "pending",
+      "completed": false,
+      "due_date": "2024-01-18T17:00:00Z",
+      "priority": "medium",
+      "project": "Client Project",
+      "assignee": "user@company.com",
+      "tags": ["presentation", "stakeholders"]
+    }
+  ]
+} 

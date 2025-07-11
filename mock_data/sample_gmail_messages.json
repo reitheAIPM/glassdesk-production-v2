@@ -1,0 +1,61 @@
+{
+  "messages": [
+    {
+      "id": "msg_001",
+      "threadId": "thread_001",
+      "subject": "Q4 Budget Review - Action Required",
+      "from": "boss@company.com",
+      "to": "user@company.com",
+      "date": "2024-01-15T10:30:00Z",
+      "snippet": "Hi, I need the Q4 budget review completed by Friday. This is critical for our board meeting next week.",
+      "body": "Hi,\n\nI need the Q4 budget review completed by Friday. This is critical for our board meeting next week.\n\nPlease include:\n- Marketing spend analysis\n- Development team costs\n- Revenue projections\n\nLet me know if you need any clarification.\n\nThanks,\nBoss"
+    },
+    {
+      "id": "msg_002", 
+      "threadId": "thread_002",
+      "subject": "Meeting Follow-up: Mobile App Design",
+      "from": "designer@company.com",
+      "to": "user@company.com",
+      "date": "2024-01-15T14:20:00Z",
+      "snippet": "Following up on our meeting today. I've attached the updated mobile app designs for your review.",
+      "body": "Hi,\n\nFollowing up on our meeting today. I've attached the updated mobile app designs for your review.\n\nKey changes:\n- Updated color scheme\n- Improved navigation flow\n- Added new features from our discussion\n\nPlease review and let me know your thoughts by Wednesday.\n\nBest,\nDesigner"
+    },
+    {
+      "id": "msg_003",
+      "threadId": "thread_003", 
+      "subject": "Weekly Team Update",
+      "from": "team@company.com",
+      "to": "user@company.com",
+      "date": "2024-01-15T16:45:00Z",
+      "snippet": "Here's this week's team update. We've made good progress on the website redesign project.",
+      "body": "Hi Team,\n\nHere's this week's team update:\n\n✅ Completed:\n- Website homepage redesign\n- New logo implementation\n- SEO optimization\n\n🔄 In Progress:\n- Mobile app development (70% complete)\n- Content migration\n\n📋 Next Week:\n- User testing sessions\n- Performance optimization\n\nGreat work everyone!\n\nTeam Lead"
+    },
+    {
+      "id": "msg_004",
+      "threadId": "thread_004",
+      "subject": "Spam: You've won $1,000,000!",
+      "from": "spam@fake.com",
+      "to": "user@company.com", 
+      "date": "2024-01-15T09:15:00Z",
+      "snippet": "CONGRATULATIONS! You've been selected to receive $1,000,000! Click here to claim your prize!",
+      "body": "CONGRATULATIONS!\n\nYou've been selected to receive $1,000,000!\n\nClick here to claim your prize: http://fake-spam-site.com\n\nThis is a limited time offer!"
+    },
+    {
+      "id": "msg_005",
+      "threadId": "thread_005",
+      "subject": "Client Feedback: Project Alpha",
+      "from": "client@clientcompany.com",
+      "to": "user@company.com",
+      "date": "2024-01-15T11:30:00Z",
+      "snippet": "Thank you for the excellent work on Project Alpha. The team is very happy with the results.",
+      "body": "Hi,\n\nThank you for the excellent work on Project Alpha. The team is very happy with the results.\n\nWe particularly liked:\n- The intuitive user interface\n- Fast loading times\n- Comprehensive documentation\n\nWe're looking forward to working on the next phase.\n\nBest regards,\nClient"
+    }
+  ],
+  "metadata": {
+    "total_messages": 5,
+    "date_range": "2024-01-15",
+    "spam_count": 1,
+    "important_count": 3,
+    "action_required_count": 2
+  }
+} 
